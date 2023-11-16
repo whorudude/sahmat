@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
 import './App.css';
 
-const App = () => {
-  const [selectedCoordinate, setSelectedCoordinate] = useState('');
-  const [rooks, setRooks] = useState(Array(8).fill(null).map(() => Array(8).fill(false)));
-
+  const App = () => {
+  
+    const handleClearRooks = () => {
+      setRooks(Array(8).fill(null).map(() => Array(8).fill(false)));
+    };
+  
+    return (
+      <div className="chessboard">
+        <div>
+          <button onClick={handleClearRooks}>Șterge Toate</button>
+        </div>
+        <table>
+          <tbody>
+            {renderRows()}
+          </tbody>
+        </table>
+      </div>
+    );
   //const handleAddRook = () => {
    
   //};
