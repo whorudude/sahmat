@@ -1,0 +1,25 @@
+.chessboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #add8e6;
+  }
+  
+  .white {
+    background-color: #ffffff; 
+  }
+  
+  .black {
+    background-color: #008000; 
+  }
+  
+  .coordinates {
+    color: #0000ff; 
+  }
+  
+  .cell {
+    border: 1px solid #000080; 
+  }
+  
