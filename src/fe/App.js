@@ -42,9 +42,22 @@ import './App.css';
           />
         </label>
         <button onClick={handleAddRook}>Adaugă Turn</button>
+        <button onClick={generateAllPossibleRooks}>Generează Toate</button>
+        <button onClick={handleClearRooks}>Șterge Toate</button>
       </div>
       <table>
         <tbody>
+          <tr>
+            <td className="coordinates"></td>
+            <td className="coordinates">A</td>
+            <td className="coordinates">B</td>
+            <td className="coordinates">C</td>
+            <td className="coordinates">D</td>
+            <td className="coordinates">E</td>
+            <td className="coordinates">F</td>
+            <td className="coordinates">G</td>
+            <td className="coordinates">H</td>
+          </tr>
           {renderRows()}
         </tbody>
       </table>
