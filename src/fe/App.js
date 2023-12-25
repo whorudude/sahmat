@@ -15,10 +15,19 @@ const App = () => {
     return true;
   };
 
-  /* const generateAllPossibleRooks = () => {
+  const generateAllPossibleRooks = () => {
     const generateRooksHelper = (row) => {
       if (row === 8) {
-      
+        return true;
+      }
+      const currentRooksCount = rooks[row].reduce((count, cell) => (cell ? count + 1 : count), 0);
+  
+      if (currentRooksCount === 0) {
+        for (let col = 0; col < 8; col++) {
+          if (!rooks.some((row) => row[col]) && isRookSafe(row, col)) {
+            const newRooks = [...rooks];
+            newRooks[row][col] = true;
+  
             if (generateRooksHelper(row + 1)) {
               setRooks(newRooks);
               return true;
@@ -33,10 +42,27 @@ const App = () => {
       return false;
     };
     generateRooksHelper(0);
-  }; */
+  };
 
-  //const handleAddRook = () => {
-   
+  const handleAddRook = () => {
+    const validCoordinates = /^[A-H][1-8]$/;
+    if (validCoordinates.test(selectedCoordinate)) {
+      const col = selectedCoordinate.charCodeAt(0) - 65;
+      const row = 8 - parseInt(selectedCoordinate[1], 10); // Corectăm calculul pentru rând
+  
+      if (!rooks[row][col] && isRookSafe(row, col)) {
+        const newRooks = [...rooks];
+        newRooks[row][col] = true;
+        setRooks(newRooks);
+        setSelectedCoordinate('');
+      } else {
+        alert('Turnul nu poate fi plasat în această poziție, deoarece poate fi atacat de un alt turn.');
+      }
+    } else {
+      alert('Coordonate invalide! Introduceți coordonatele corect (de exemplu, A2).');
+    }
+  };
+
   const handleClearRooks = () => {
     setRooks(Array(8).fill(null).map(() => Array(8).fill(false)));
   };
